@@ -4,6 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
+    "prettier": "prettier --write \"**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,5 +13,8 @@
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.7"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
   }
 }
