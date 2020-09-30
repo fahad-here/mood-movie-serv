@@ -1,5 +1,5 @@
 {
-  "name": "calculator-conv-serverless",
+  "name": "mood-movie-serv",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
