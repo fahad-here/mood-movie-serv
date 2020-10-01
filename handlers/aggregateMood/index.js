@@ -1,5 +1,7 @@
 const { Response } = require('./../../utils')
 const { AggregateMoodSchema } = require('../../models')
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise
 
 const addMood = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
@@ -29,6 +31,29 @@ const addMood = async (event, context) => {
     }
 }
 
+const getAllMoods = async (event, context) => {
+    context.callbackWaitsForEmptyEventLoop = false
+    try {
+        await mongoose.connect()
+        const moods = await AggregateMoodSchema.find({})
+        if (moods && moods.length === 0)
+            return Response(404, {
+                message: 'NO moods have been added.',
+                moods
+            })
+        return Response(200, {
+            message: 'Successfully added aggregate mood.',
+            moods
+        })
+    } catch (e) {
+        console.log(e)
+        return Response(e.statusCode || 500, {
+            message: 'Error adding aggregate mood'
+        })
+    }
+}
+
 module.exports = {
-    addMood
+    addMood,
+    getAllMoods
 }
