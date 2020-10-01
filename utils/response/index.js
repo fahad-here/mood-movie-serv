@@ -1,7 +1,7 @@
 module.exports = (
     code,
-    headers = { 'Content-Type': 'application/json' },
-    body
+    body,
+    headers = { 'Content-Type': 'application/json' }
 ) => ({
     code,
     headers,
